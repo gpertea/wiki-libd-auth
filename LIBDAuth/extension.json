@@ -1,0 +1,43 @@
+{
+    "name": "LIBD Auth integration",
+    "version": "0.1.1",
+    "author": [
+            "[https://github.com/mywikis MyWikis LLC]"
+    ],
+    "url": "https://github.com/gpertea/mwLIBDAuth",
+    "descriptionmsg": "libdauth-desc",
+    "license-name": "GPL-2.0",
+    "type": "other",
+    "requires": {
+        "MediaWiki": ">= 1.31.0",
+        "extensions": {
+            "PluggableAuth": ">= 5.1"
+        }
+    },
+    "MessagesDirs": {
+        "LIBDAuth": [
+            "i18n"
+        ]
+    },
+    "ExtensionFunctions": [
+        "MediaWiki\\Extension\\LIBDAuth\\Setup::init"
+    ],
+    "Hooks": {
+         "BeforePageDisplay": "MediaWiki\\Extension\\LIBDAuth\\Setup::onBeforePageDisplay"
+    },
+    "AutoloadNamespaces": {
+        "MediaWiki\\Extension\\LIBDAuth\\": "includes/"
+    },
+    "config": {
+        "PluggableAuth_Class": {
+            "value": "MediaWiki\\Extension\\LIBDAuth\\LIBDAuth"
+        },
+        "PluggableAuth_ButtonLabelMessage": {
+            "value": "libdauth-loginbtn-text"
+        },
+        "LIBDAuth_BaseUrl": {
+            "value": "https://192.168.77.16/auth"
+        }
+    },
+    "manifest_version": 2
+}
