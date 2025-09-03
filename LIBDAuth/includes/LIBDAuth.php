@@ -20,6 +20,8 @@ class LIBDAuth extends IPluggableAuthBase {
 		}
         #$authManager = AuthManager::singleton();
         $extraLoginFields = $authManager->getAuthenticationSessionData(PluggableAuthLogin::EXTRALOGINFIELDS_SESSION_KEY);
+        ## remove the credentials from the session!
+        $authManager->removeAuthenticationSessionData(PluggableAuthLogin::EXTRALOGINFIELDS_SESSION_KEY);
 
         $username = $extraLoginFields[ExtraLoginFields::USERNAME];
 	$password = $extraLoginFields[ExtraLoginFields::PASSWORD];
@@ -77,7 +79,10 @@ class LIBDAuth extends IPluggableAuthBase {
     }
 
     public function deauthenticate(User &$user) {
-        $user = null;
+        #$user = null;
+       // This function is called on logout - keep it empty for now
+       // If you need to perform any action with your external authentication service,
+       // like calling a logout endpoint, you would do it here.
     }
     
     
